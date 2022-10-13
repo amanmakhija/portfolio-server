@@ -1,3 +1,4 @@
+//Requirements
 const express = require('express');
 const bodyParser = require('body-parser');
 const axios = require('axios');
@@ -5,10 +6,12 @@ const cors = require('cors');
 
 const app = express();
 
+//Middleware
 app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+//Routes
 app.get('/', (req, res) => {
     res.send("Server is running properly");
 });
@@ -49,6 +52,6 @@ app.post('/message', (req, res) => {
 });
 
 //Listening on PORT
-app.listen(8080 || process.env.PORT, () => {
-    console.log(`Server started on PORT ${8080 || process.env.PORT}`);
+app.listen(process.env.PORT, () => {
+    console.log(`Server started on PORT ${process.env.PORT}`);
 });

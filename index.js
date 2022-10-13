@@ -9,7 +9,11 @@ app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.post('/message', async (req, res) => {
+app.get('/', (req, res) => {
+    res.send("Server is running properly");
+});
+
+app.post('/message', (req, res) => {
 
     const { name, email, subject, message } = req.body;
 

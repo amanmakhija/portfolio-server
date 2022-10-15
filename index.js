@@ -39,7 +39,7 @@ app.post('/message', (req, res) => {
         headers: {
             'Content-Type': 'application/json',
             'Access-Control-Request-Headers': '*',
-            'api-key': process.env.API_KEY,
+            'api-key': `${process.env.API_KEY}`,
         },
         data: data
     };

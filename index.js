@@ -22,9 +22,9 @@ app.post('/message', (req, res) => {
     const { name, email, subject, message } = req.body;
 
     const data = JSON.stringify({
-        "collection": `${process.env.COLLECTION}`,
-        "database": `${process.env.DB}`,
-        "dataSource": `${process.env.DATA_SOURCE}`,
+        "collection": process.env.COLLECTION,
+        "database": process.env.DB,
+        "dataSource": process.env.DATA_SOURCE,
         "document": {
             name,
             email,
@@ -39,7 +39,7 @@ app.post('/message', (req, res) => {
         headers: {
             'Content-Type': 'application/json',
             'Access-Control-Request-Headers': '*',
-            'api-key': `${process.env.API_KEY}`,
+            'api-key': process.env.API_KEY,
         },
         data: data
     };

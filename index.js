@@ -1,4 +1,5 @@
 //Requirements
+require("dotenv").config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const axios = require('axios');
@@ -21,9 +22,9 @@ app.post('/message', (req, res) => {
     const { name, email, subject, message } = req.body;
 
     const data = JSON.stringify({
-        "collection": "messages",
-        "database": "portfolioDB",
-        "dataSource": "Cluster0",
+        "collection": `${process.env.COLLECTION}`,
+        "database": `${process.env.DB}`,
+        "dataSource": `${process.env.DATA_SOURCE}`,
         "document": {
             name,
             email,
@@ -38,7 +39,7 @@ app.post('/message', (req, res) => {
         headers: {
             'Content-Type': 'application/json',
             'Access-Control-Request-Headers': '*',
-            'api-key': '9ZlB63x7BOdPi6W8yx81QTpmJv8u1ABj2NkZ3CWCkGXMzK4lSbVNzOTCfhXaLxYY',
+            'api-key': `${process.env.API_KEY}`,
         },
         data: data
     };
